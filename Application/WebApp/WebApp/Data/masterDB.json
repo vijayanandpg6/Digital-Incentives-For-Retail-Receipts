@@ -1,0 +1,50 @@
+{
+  "RetailersList": 
+  [
+    {
+      "retailerName": "walmart",
+      "products": {
+        "WELCHS JCE": 1,
+        "SPARK CIDER": 2,
+        "GATORADE": 3,
+        "INDEPEND": 4,
+        "GREHLINS": 5,
+        "CHAR": 6,
+        "DINOSAURS": 7,
+        "RED BOA": 8,
+        "STRAWBERRIES": 9,
+        "PEPPER": 10,
+        "OREO": 11,
+        "CHOCOLATE": 12
+      }
+    },
+    {
+      "retailerName": "Jickn Bay",
+      "products": {
+        "GATORADE": 3,
+        "INDEPEND": 4,
+        "GREHLINS": 5,
+        "CHAR": 6,
+        "DINOSAURS": 7,
+        "RED BOA": 8,
+        "CHOCOLATE BAR": 12,
+        "BEEF": 13,
+        "CARRIER BAG": 14
+      }
+    },
+    {
+      "retailerName": "OUURE",
+      "products": {
+        "GATORADE": 4,
+        "BADOIT": 3,
+        "GREHLINS": 5,
+        "CHAR": 6,
+        "DINOSAURS": 7,
+        "RED BOA": 8,
+        "CHODLAT": 12,
+        "BEEF": 13,
+        "CARRIER BAG": 14
+      }
+    }
+  ]
+}

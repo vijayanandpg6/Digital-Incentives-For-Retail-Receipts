@@ -24,3 +24,44 @@
 </div>
 
 <br /><br />
+
+
+<button class="collapsible" style="background-color: #7d64b2">(Step-1) Image Segmentation</button>
+
+<div class="content">
+    <br />
+    <br /><br />
+    @if (System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath("~/ProcessedFiles/originalImage.jpg"))
+        && System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath("~/ProcessedFiles/segmentedImageTight.jpg")))
+    {
+        <table>
+            <tr>
+                <td>
+                    <span style="font-size: x-large;">
+                        <b>UPLOADED RECEIPT</b>
+                    </span>
+                </td>
+                <td width="5%"></td>
+                <td>
+                    <span style="font-size: x-large;">
+                        <b>SEGMENTED RECEIPT</b>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td width="40%">
+                    <img src="~/ProcessedFiles/originalImage.jpg" style="width: 900px;height: 1024px;border: solid;" />
+                </td>
+                <td width="5%"></td>
+                <td width="40%">
+                    <img src="~/ProcessedFiles/segmentedImageTight.jpg" style="width: 900px;height: 1024px;border: solid;" />
+                </td>
+            </tr>
+        </table>
+    }
+    @*<img src="~/ProcessedFiles/products.jpg" />*@
+    @*<div class="lineBr"></div>*@
+    <br />
+    <br />
+</div><br /><br /><br />
+    

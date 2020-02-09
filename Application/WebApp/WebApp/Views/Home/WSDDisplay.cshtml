@@ -5,63 +5,98 @@
 }
 
 
-<script src="~/scripts/SequenceDg.js"></script>
-<link href="~/Content/SequenceDg.css" rel="stylesheet" />
-<link href="~/Content/logo.css" rel="stylesheet" />
-<br />
-<div>
-    <span id="btnHomeButton" onclick="NavigateToHome()">
-        <img src="~/Images/Home-icon.png" style="width: 65px;height: 65px; right:24px;position: absolute;top: 20px;" class="custom-thumbnail" />
-    </span>
+<script src="~/scripts/frontPage.js"></script>
+<script src="~/scripts/audioRecord.js"></script>
+<script src="~/scripts/recorder.js"></script>
+
+<div class="main">
+    <section class="company-heading intro-type" id="parallax-one">
+        <div class="container jumbo">
+            <div class="jumbotron" style="padding-bottom: 308px;padding-top: 137px;background-color: #000000">
+                <h1>Digital Incentives</h1><h2>for Retail Receipts</h2><br /><br />
+                <div class="col-md-12">
+                    @*<a class="ct-btn-scroll ct-js-btn-scroll" href="#section2"><img alt="Arrow Down Icon" src="~/Images/arrow-down2.png"></a>*@
+                    <div>
+                        <a class="btnupload-scroll" href="#section2"><img alt="Upload Icon" src="~/Images/arrow-upload-icon.png"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="section2">
+        <div class="container jumbo">
+            <div class="jumbotron" style="padding-bottom: 167px;padding-top: 69px;background-color: #ff8187">
+                <br /><br />
+                @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "ShowLoading(event)" }))
+                {
+                    <div class="rowTextInput">
+                        <span>
+                            @*@Html.TextBox("file", "", new { type = "file" }) <br />*@
+                            <input type="file" name="file" class="basic-slide" /><label for="name">Upload</label>
+                            @*<input class="basic-slide custom-upload" id="InputUploadValue" name="InputUploadValue" type="file" placeholder="" /><label for="name">Upload</label>*@
+                        </span>
+                        <br /><br />
+                        @*<button class="btn btn-warning" type="submit" id="submitBtn">Upload</button>*@
+                        <input type="submit" value="Process" class="btn btn-warning" id="submitBtn" />
+                    </div>
+                    @*@Html.TextAreaFor(model => model.InputTxtValue)*@<br />
+
+                }
+
+                @*@using (Html.BeginForm("UploadFile", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div>
+                            @Html.TextBox("file", "", new { type = "file" }) <br />
+                            <input type="submit" value="Upload" />
+                        </div>
+                    }*@
+
+            </div>
+        </div>
+    </section>
 </div>
-<div>
-    <span class="tag-wrap">
-        <span class="tag">
-            Digital Incentives
-        </span>
-    </span>
-    <br /><br /><br />
-</div>
-
-<br /><br />
 
 
-<button class="collapsible" style="background-color: #7d64b2">(Step-1) Image Segmentation</button>
+<button class="collapsible" style="background-color: #7d64b2">(Step-2) Processed Images</button>
 
 <div class="content">
     <br />
     <br /><br />
-    @if (System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath("~/ProcessedFiles/originalImage.jpg"))
-        && System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath("~/ProcessedFiles/segmentedImageTight.jpg")))
+    @if (System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath("~/ProcessedFiles/companyName.jpg")))
     {
-        <table>
+        <table style="width:1235px">
             <tr>
                 <td>
-                    <span style="font-size: x-large;">
-                        <b>UPLOADED RECEIPT</b>
+                    <span style="font-size: medium;">
+                        <b>RETAILER NAME</b>
                     </span>
                 </td>
                 <td width="5%"></td>
                 <td>
-                    <span style="font-size: x-large;">
-                        <b>SEGMENTED RECEIPT</b>
+                    <span style="font-size: medium;">
+                        <b>RETAILER NAME</b>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td width="40%">
-                    <img src="~/ProcessedFiles/originalImage.jpg" style="width: 900px;height: 1024px;border: solid;" />
+                    <img src="~/ProcessedFiles/companyName.jpg" style="border: solid;" />
                 </td>
                 <td width="5%"></td>
                 <td width="40%">
-                    <img src="~/ProcessedFiles/segmentedImageTight.jpg" style="width: 900px;height: 1024px;border: solid;" />
+                    <p style="background-color:white;max-width: 400px;border-style: inset">
+                        @ViewBag.CompanyName
+                        @*<iframe src="~/ProcessedFiles/companyName.txt" frameborder="0" width="95%"></iframe>*@
+                    </p>
                 </td>
             </tr>
-        </table>
+        </table><br />
     }
-    @*<img src="~/ProcessedFiles/products.jpg" />*@
-    @*<div class="lineBr"></div>*@
+
+
     <br />
     <br />
 </div><br /><br /><br />
-    
+
+@*<button class="collapsible" style="background-color: #8390e2">Ask me questions!</button>*@

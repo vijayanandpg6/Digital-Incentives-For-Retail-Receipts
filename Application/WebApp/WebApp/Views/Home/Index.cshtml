@@ -22,4 +22,55 @@
         </div>
     </section>
 
+    <section id="section2">
+        <div class="container jumbo">
+            <div class="jumbotron" style="padding-bottom: 167px;padding-top: 69px;background-color: #ff8187">
+                <br /><br />
+                @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "ShowLoading(event)" }))
+                {
+                    <div class="rowTextInput">
+                        <span>
+                            @*@Html.TextBox("file", "", new { type = "file" }) <br />*@
+                            <input type="file" name="file" class="basic-slide" /><label for="name">Upload</label>
+                            @*<input class="basic-slide custom-upload" id="InputUploadValue" name="InputUploadValue" type="file" placeholder="" /><label for="name">Upload</label>*@
+                        </span>
+                        <br /><br />
+                        @*<button class="btn btn-warning" type="submit" id="submitBtn">Upload</button>*@
+                        <input type="submit" value="Process" class="btn btn-warning" id="submitBtn" />
+                    </div>
+                    @*@Html.TextAreaFor(model => model.InputTxtValue)*@<br />
+
+                }
+
+                @*@using (Html.BeginForm("UploadFile", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div>
+                            @Html.TextBox("file", "", new { type = "file" }) <br />
+                            <input type="submit" value="Upload" />
+                        </div>
+                    }*@
+
+            </div>
+        </div>
+    </section>
 </div>
+
+
+<script type="text/javascript">
+    function ShowLoading(e) {
+        var div = document.createElement('div');
+        var img = document.createElement('img');
+        //img.src = 'loading.gif';
+        img.src = "http://localhost:62041/Images/" + "loading5.gif"
+        img.style.width = "75px";
+        img.style.height = "75px";
+        div.innerHTML = "<b>Loading...</b><br /><br />";
+        div.style.cssText = 'position: fixed; top: 13%; left: 48%; z-index: 5000; height: 500px; text-align: center; '; /*background: #ff8187;*/
+        div.appendChild(img);
+        document.body.appendChild(div);
+        return true;
+        // These 2 lines cancel form submission, so only use if needed.
+        //window.event.cancelBubble = true;
+        //e.stopPropagation();
+    }
+</script>

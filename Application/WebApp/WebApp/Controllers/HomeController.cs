@@ -125,14 +125,27 @@ namespace WebApp.Controllers
         }
         private async Task<int> ProcessImageSegmentation()
         {
-            System.Diagnostics.Process.Start(Server.MapPath("~") + "models-1.13.0\\research\\object_detection\\object_detection_tutorial.py");
+            //System.Diagnostics.Process.Start(Server.MapPath("~") + "models-1.13.0\\research\\object_detection\\object_detection_tutorial.py");
 
-            var p = System.Diagnostics.Process.Start(temp);
-            p.WaitForExit();
+            //var p = System.Diagnostics.Process.Start(temp);
+            //p.WaitForExit();
 
-            ScriptEngine engine = Python.CreateEngine();
-            engine.ExecuteFile(imageSegmentation);
-            
+            //ScriptEngine engine = Python.CreateEngine();
+            //engine.ExecuteFile(imageSegmentation);
+
+            var psi = new ProcessStartInfo();
+            psi.FileName = pythonExePath;
+
+            psi.Arguments = imageSegmentation;
+            psi.UseShellExecute = false;
+            psi.CreateNoWindow = false;
+            psi.RedirectStandardOutput = true;
+            psi.RedirectStandardError = true;
+
+            using (var process = Process.Start(psi))
+            {
+                process.WaitForExit();
+            }
             return 1;
         }
 
@@ -154,7 +167,18 @@ namespace WebApp.Controllers
 
         private void ProcessUpload()
         {
-            
+            ProcessStartInfo start = new ProcessStartInfo();
+            start.FileName = cmdFile;
+            start.Arguments = temp;
+            start.UseShellExecute = false;
+            start.RedirectStandardOutput = true;
+            using (Process process = Process.Start(start))
+            {
+                using (StreamReader reader = process.StandardOutput)
+                {
+                    string result = reader.ReadToEnd();
+                }
+            }
         }
     }
 }

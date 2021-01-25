@@ -1,0 +1,24 @@
+item{
+    id:1
+    name:'company name'
+}
+item{
+    id:2
+    name:'company address'
+}
+item{
+    id:3
+    name:'products'
+}
+item{
+    id:4
+    name:'total'
+}
+item{
+    id:5
+    name:'date'
+}
+item{
+    id:6
+    name:'none'
+}
